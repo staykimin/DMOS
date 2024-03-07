@@ -89,7 +89,6 @@ class Downloader(Configurate):
 	
 	def Download(kimin, *argument):
 		data = kimin.Extract_Data(mode=argument[1], url=argument[0])
-		print(data)
 		if not os.path.exists(data['nama']):
 			open(data['nama'], 'ab').close()
 		size = os.path.getsize(data['nama'])
