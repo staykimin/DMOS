@@ -59,19 +59,19 @@
 					"size":
 						{
 							"header":true,
-							"data":"content-length"
+							"data":"Content-Length"
 						},
 					"nama":
 						{
 							"header":true,
-							"data":"content-disposition",
+							"data":"Content-Disposition",
 							"split_by":"filename=",
 							"split_index":-1
 						},
 					"file_type":
 						{
 							"header":true,
-							"data":"content-type"
+							"data":"Content-Type"
 						}
 				}
 		}
