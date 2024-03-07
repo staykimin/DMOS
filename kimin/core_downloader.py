@@ -19,14 +19,11 @@ class Driver:
 		except error.URLError as e:
 			hasil['data'] = 'Timeout' if isinstance(e.reason, socket.timeout) else str(e)
 		except Exception as e:
-			hasil['header'] = dict(respon.getheaders())
-			hasil['data'] = str(e)
+			hasil['header'], hasil['data'] = dict(respon.getheaders()), str(e)
 		return hasil
 	
 	def _stream_response(kimin, respon):
-		buffer_size = 4096
-		hasil = b''
-		start = time.time()
+		buffer_size, hasil, start = 4096, b'', time.time()
 		while True:
 			if time.time() - start > kimin.timeout:
 				break
