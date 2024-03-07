@@ -105,7 +105,7 @@ Mengubah Cara Extract Data Dari Tiap-Tiap Situs
 | `header` | `boolean` | **Required**. Bernilai True Jika Data Yang Akan Dimabil Berada Di Header. Misalnya Ukuran File |
 | `data` | `string` | **Required**. *Key* Dari Header Yang Di Extract |
 | `split_by` | `string` | Berisi String Untuk Sebagai Pemisah Antar Data String |
-| `split_index` | `string` | Berisi Nomor Index Dari Data String Yang Sudah Di Pisah Dengan *split_by* |
+| `split_index` | `integer` | Berisi Nomor Index Dari Data String Yang Sudah Di Pisah Dengan *split_by* |
 | `nama` | `dict` | **Required**. Untuk Mengambil Nama File |
 | `file_type` | `dict` | **Required**. Untuk Mengambil Type File |
 
