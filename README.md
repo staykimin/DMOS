@@ -8,8 +8,8 @@ Download Manager Open Source Adalah Program Komputer Yang Dibuat Berdasarkan Pri
 
 ## Support Download
 
-- Mediafire
-- Pixeldrain (Beta)
+- [Mediafire](https://www.mediafire.com/)
+- [Pixeldrain (Beta))](https://pixeldrain.com/)
 
 
 ## Cara Penggunaan
