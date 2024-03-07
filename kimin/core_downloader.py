@@ -1,4 +1,4 @@
-import os, datetime, json, time
+import os, datetime, time, socket
 from bs4 import BeautifulSoup as bs
 from .core_config import Configurate
 from urllib import request, error
