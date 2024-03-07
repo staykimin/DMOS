@@ -2,7 +2,7 @@
 # DMOS
 
 <p align="center">
-  <img width="50%" src="logo.png"/>
+  <img width="25%" src="logo.png"/>
 </p>
 Download Manager Open Source Adalah Program Komputer Yang Dibuat Berdasarkan Prinsip Dasar Software IDM (Internet Download Manager) Yang Bisa Meresume / Melanjutkan Proses Download File Tanpa Harus Mengulangi Lagi Dari Awal.
 
