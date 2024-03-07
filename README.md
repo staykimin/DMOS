@@ -68,9 +68,9 @@ Menambahkan / Mengedit Beberapa Situs Yang Bisa Didownload
 #### Example : 
 ```json
     "mediafire":
-            {
-                "url":"mediafire.com"
-            }
+	{
+		"url":"mediafire.com"
+	}
 ```
 
 Mengubah Cara Extract Link Download Dari Tiap-Tiap Situs
@@ -89,12 +89,12 @@ Mengubah Cara Extract Link Download Dari Tiap-Tiap Situs
 #### Example
 ```json
     "mediafire":
-				{
-					"parse":true,
-					"elemen":"a",
-					"attribute":{"id":"downloadButton"},
-					"extract":"href"
-				},
+	{
+		"parse":true,
+		"elemen":"a",
+		"attribute":{"id":"downloadButton"},
+		"extract":"href"
+	},
 ```
 
 Mengubah Cara Extract Data Dari Tiap-Tiap Situs
@@ -112,25 +112,25 @@ Mengubah Cara Extract Data Dari Tiap-Tiap Situs
 #### Example
 ```json
     "mediafire":
-				{
-					"size":
-						{
-							"header":true,
-							"data":"content-length"
-						},
-					"nama":
-						{
-							"header":true,
-							"data":"content-disposition",
-							"split_by":"filename=",
-							"split_index":-1
-						},
-					"file_type":
-						{
-							"header":true,
-							"data":"content-type"
-						}
-				},
+	{
+		"size":
+			{
+				"header":true,
+				"data":"content-length"
+			},
+		"nama":
+			{
+				"header":true,
+				"data":"content-disposition",
+				"split_by":"filename=",
+				"split_index":-1
+			},
+		"file_type":
+			{
+				"header":true,
+				"data":"content-type"
+			}
+	},
 ```
 
 
