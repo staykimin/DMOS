@@ -1,0 +1,32 @@
+{
+    "base_path": "db",
+    "server": {
+        "debug": false,
+        "template_auto_reload": true,
+        "session_lifetime": 10,
+        "port": 3000,
+        "host": "0.0.0.0",
+        "secret_key": "DMOS",
+        "static_path": "../db",
+        "template_path": "../db"
+    },
+    "log": {
+        "debug": false,
+        "show_query": false,
+        "show_request": false,
+        "save_log": false
+    },
+    "routes": {
+        "modul_name": "routes",
+        "API": {
+            "url": "/API",
+            "methods": ["POST", "GET"],
+            "function": "API"
+        },
+		"DMOS":{
+			"url":"/dmos",
+			"methods":["GET"],
+			"function":"Proses"
+		}
+    }
+}

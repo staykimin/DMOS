@@ -1,0 +1,34 @@
+{
+	"parse_mode":"html.parser",
+	"driver":
+		{
+			"split_size":1024,
+			"buffer":4096,
+			"timeout":5
+		},
+	"mode_selection":
+		{
+			"mediafire":
+				{
+					"url":"mediafire.com"
+				},
+			"pixeldrain":
+				{
+					"url":"pixeldrain.com"
+				},
+			"gofile":
+				{
+					"url":"gofile.io"
+				},
+			"drive":
+				{
+					"url":"google.com"
+				}
+		},
+	"link_extractor":
+		{
+		},
+	"extract_data":
+		{
+		}
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMOS Status</title>
+<link rel="icon" type="image/x-icon" href="assets/logo1.png">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        padding-bottom: 100px; /* Mengatur padding untuk footer */
+        position: relative;
+    }
+    .logo {
+        text-align: center;
+        margin-bottom: 20px;
+        position: sticky;
+        top: 0; /* Membuat logo tetap di atas */
+        background-color: #fff; /* Menghindari overlay dengan tabel saat di-scroll */
+        z-index: 1; /* Menempatkan logo di depan tabel saat di-scroll */
+    }
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: #666;
+        background-color: #fff; /* Menghindari overlay dengan tabel saat di-scroll */
+        z-index: 1; /* Menempatkan footer di depan tabel saat di-scroll */
+    }
+    .table-wrapper {
+        max-height: 400px; /* Mengatur tinggi maksimum tabel */
+        overflow-y: auto; /* Membuat scroll vertikal pada tabel jika terlalu panjang */
+    }
+    .progress {
+        height: 20px;
+        margin-bottom: 0;
+        position: relative;
+    }
+    .progress-bar {
+        position: relative;
+    }
+    .progress-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black; /* Sesuaikan warna teks sesuai kebutuhan */
+        font-size: 12px; /* Sesuaikan ukuran font sesuai kebutuhan */
+        font-weight: bold; /* Sesuaikan ketebalan font sesuai kebutuhan */
+    }
+    .success {
+        background-color: #90EE90; /* Warna hijau untuk sukses */
+    }
+    .failed {
+        background-color: #FF0000; /* Warna merah untuk gagal */
+    }
+    .queued {
+        background-color: #FFD700; /* Warna kuning untuk dalam antrian */
+    }
+</style>
+
+
+
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/logo1.png') }}" alt="Logo Aplikasi">
+        </div>
+		<div>
+			<h1>Download Detail</h1>
+		</div>
+        <div class="table-wrapper">
+            <table class="table" id="download-table">
+                <thead>
+                    <tr>
+                        <th>Nama File</th>
+                        <th>Ukuran File</th>
+						<th>Downloaded</th>
+                        <th>Status</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data akan diisi melalui JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            &copy; 2024 DMOS. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        // Ambil data dari API dan ubah nilai tabel
+        fetch('/API')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector('#download-table tbody');
+                data.data.forEach(item => {
+                    const row = document.createElement('tr');
+                    if (data.complete.includes(item.link)) {
+                        row.classList.add('success');
+                        item.status = 'Sukses';
+                    } else if (data.failed.includes(item.link)) {
+                        row.classList.add('failed');
+                        item.status = 'Gagal';
+                    } else if (data.pending.includes(item.link)) {
+                        row.classList.add('queued');
+                        item.status = 'Dalam Antrian';
+                    } else if (data.data.some(download => download.link === item.link)) {
+                        row.classList.add('downloading');
+                        item.status = 'Downloading';
+                    }
+
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = item.nama;
+                    row.appendChild(nameCell);
+
+                    const sizeCell = document.createElement('td');
+                    sizeCell.textContent = item.size;
+                    row.appendChild(sizeCell);
+					
+                    const downloadedCell = document.createElement('td');
+                    downloadedCell.textContent = item.downloaded || '-';
+                    row.appendChild(downloadedCell);
+					
+                    const statusCell = document.createElement('td');
+                    statusCell.textContent = item.status;
+                    row.appendChild(statusCell);
+
+                    const progressCell = document.createElement('td');
+                    if (item.progress) {
+                        const progressDiv = document.createElement('div');
+                        progressDiv.classList.add('progress');
+                        const progressValue = parseFloat(item.progress.replace('%', ''));
+                        const progressBar = document.createElement('div');
+                        progressBar.classList.add('progress-bar', 'bg-success');
+                        progressBar.style.width = `${progressValue}%`;
+
+                        // Tambahkan teks di tengah progress bar
+                        const progressText = document.createElement('span');
+                        progressText.classList.add('progress-text');
+                        progressText.textContent = `${progressValue}%`;
+                        progressBar.appendChild(progressText);
+
+                        progressBar.setAttribute('role', 'progressbar');
+                        progressBar.setAttribute('aria-valuenow', progressValue);
+                        progressBar.setAttribute('aria-valuemin', '0');
+                        progressBar.setAttribute('aria-valuemax', '100');
+                        progressDiv.appendChild(progressBar);
+                        progressCell.appendChild(progressDiv);
+                    } else {
+                        progressCell.textContent = '-';
+                    }
+                    row.appendChild(progressCell);
+
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
+</body>
+</html>
