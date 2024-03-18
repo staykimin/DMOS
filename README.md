@@ -151,3 +151,11 @@ Mengubah Cara Extract Data Dari Tiap-Tiap Situs
 
 - [@staykimin](https://github.com/staykimin)
 
+
+## Support
+
+Support Saya Di :
+
+- [Saweria](https://saweria.co/staykimin)
+- [Facebook](https://web.facebook.com/profile.php?id=61557427611851)
+
